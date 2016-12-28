@@ -1,0 +1,53 @@
+<div class="page-header">
+    <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        New <%= human_name %>
+    <%% end %>
+    <h1>Listing <%= plural_table_name %></h1>
+</div>
+
+<%%= form_tag <%= plural_table_name %>_path, :method => 'get', :id => "<%= plural_table_name %>_search" do %>
+    <p>
+    <%%= text_field_tag :search, params[:search] %>
+    <%%= submit_tag "Search", :name => nil %>
+    </p>
+
+    <%%= hidden_field_tag :direction, params[:direction] %>
+    <%%= hidden_field_tag :sort, params[:sort] %>
+<%% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    <% attributes.each do |attribute| -%>
+        <th> <%%= sortable "<%= attribute.name %>" %> </th>
+    <% end -%>
+        <th class="thin"></th>
+        <th class="thin"></th>
+        <th class="thin"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%%= content_tag_for(:tr, @<%= plural_table_name %>) do |<%= singular_table_name %>| %>
+    <% attributes.each do |attribute| -%>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+    <% end -%>
+
+    <td class="thin">
+        <%%= link_to raw('<span data-toggle="tooltip" title="View" class="glyphicon glyphicon-eye-open"> </span> '),
+             <%= singular_table_name %> %></td>
+    <td class="thin">
+        <%%= link_to raw('<span data-toggle="tooltip" title="Edit" class="glyphicon glyphicon-pencil"> </span> '),
+            edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
+    <td class="thin">
+        <%%= link_to raw('<span data-toggle="tooltip" title="Delete" class="glyphicon glyphicon-trash"> </span> '),
+            <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%% end %>
+    </tbody>
+  </table>
+</div>
+
+<%%= will_paginate  @<%= plural_table_name %> %> 
+
