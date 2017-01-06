@@ -3,7 +3,10 @@
         <span class="glyphicon glyphicon-plus"></span>
         New <%= human_name %>
     <%% end %>
-    <h1>Listing <%= plural_table_name %></h1>
+    <h1>
+        <span class="glyphicon glyphicon-list-alt hidden-xs"></span>
+        Listing <%= plural_table_name %>
+    </h1>
 </div>
 
 <%%= form_tag <%= plural_table_name %>_path, :method => 'get', :id => "<%= plural_table_name %>_search" do %>
@@ -49,5 +52,5 @@
   </table>
 </div>
 
-<%%= will_paginate  @<%= plural_table_name %> %> 
+<%%= will_paginate  @<%= plural_table_name %>, renderer: BootstrapPagination::Rails %> 
 

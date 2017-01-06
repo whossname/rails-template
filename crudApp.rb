@@ -21,8 +21,6 @@ rake "db:create", env: "development", sudo:true
 model_name = "user" 
 generate "devise", model_name
 
-# append file using:
-## echo "hello world" >> my_file.txt
 
 # add templates and application files
 
@@ -33,5 +31,25 @@ end
 copy_file "appFiles/css/application.css", "app/assets/stylesheets/application.css"
 copy_file "appFiles/helpers/application_helper.rb", "app/helpers/application_helper.rb"
 copy_file "appFiles/config/application.rb", "config/application.rb"
-FileUtils.cp_r "/templates", "lib"
+copy_file "appFiles/layouts/application.html.erb", "app/views/layouts/application.html.erb"
+
+# TEMPLATES
+paths = [
+    "templates/active_record/model/model.rb",
+    "templates/rails/scaffold_controller/controller.rb",
+    "templates/erb/controller/view.html.erb",
+    "templates/erb/scaffold/edit.html.erb",
+    "templates/erb/scaffold/index.html.erb",
+    "templates/erb/scaffold/show.html.erb",
+    "templates/erb/scaffold/_form.html.erb",
+    "templates/erb/scaffold/new.html.erb"
+]
+
+paths.each do |path|
+    copy_file path, "lib/" + path 
+end
+
+
+# append file using:
+## echo "hello world" >> my_file.txt
 
