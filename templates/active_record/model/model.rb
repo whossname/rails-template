@@ -16,7 +16,8 @@ class <%= class_name %> < <%= parent_class_name.classify %>
 
 def self.search(search)
     if search
-        where('name LIKE ?', "%#{search}%") #TODO change name to searchable value
+        searchString = "<%= attributes_names.map { |attributeName| "(#{attributeName} LIKE :search)" }.join(' OR ') %>" 
+        where(searchString, search:"%#{search}%") 
     else
         all
     end

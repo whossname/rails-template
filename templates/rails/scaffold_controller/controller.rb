@@ -68,8 +68,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     end
 
     def sort_column
-        # TODO set default sort parameter (replace name)
-        <%= plural_table_name.classify %>.column_names.include?(params[:sort]) ? params[:sort] : "name" 
+        <%= plural_table_name.classify %>.column_names.include?(params[:sort]) ? params[:sort] : "<%= attributes_names.first %>"
     end
 
     def sort_direction
