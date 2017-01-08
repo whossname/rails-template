@@ -2,6 +2,8 @@ require_relative 'boot'
 
 require 'rails/all'
 
+puts __FILE__
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -14,5 +16,18 @@ module App
     # -- all .rb files in that directory are automatically loaded.
 
       WillPaginate.per_page = 5
+
+      
+      config.generators do |g|
+          destination = "#{Rails.root}/app/views/layouts/_navbar.html.erb"
+          tableName = ""
+          content = "<li><a href='" + tableName + "'>" + tableName + "</a></li>"
+
+          open(destination, 'a') do |f|
+                f << "\n" + content 
+          end
+      end
   end
+
 end
+

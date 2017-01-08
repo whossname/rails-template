@@ -32,6 +32,12 @@ copy_file "appFiles/css/application.css", "app/assets/stylesheets/application.cs
 copy_file "appFiles/helpers/application_helper.rb", "app/helpers/application_helper.rb"
 copy_file "appFiles/config/application.rb", "config/application.rb"
 copy_file "appFiles/layouts/application.html.erb", "app/views/layouts/application.html.erb"
+copy_file "appFiles/layouts/_navbar.html.erb", "app/views/layouts/_navbar.html.erb"
+
+# set home page
+copy_file "appFiles/config/routes.rb", "config/routes.rb"
+copy_file "appFiles/controllers/home_controllers.rb", "app/controllers/home_controllers.rb"
+copy_file "appFiles/views/home/index.html.erb" "app/views/home/index.html.erb"
 
 # TEMPLATES
 paths = [
