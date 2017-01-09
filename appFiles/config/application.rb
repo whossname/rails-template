@@ -8,7 +8,7 @@ puts __FILE__
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-#TODO change 'App' to decen application name
+#TODO change 'App' to decent application name
 module App
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -17,16 +17,13 @@ module App
 
       WillPaginate.per_page = 5
 
-      
-      config.generators do |g|
-          destination = "#{Rails.root}/app/views/layouts/_navbar.html.erb"
-          tableName = ""
-          content = "<li><a href='" + tableName + "'>" + tableName + "</a></li>"
 
-          open(destination, 'a') do |f|
-                f << "\n" + content 
-          end
-      end
+      #destination = "#{Rails.root}/app/views/layouts/_navbar.html.erb"
+      #tableName = ""
+      #content = "<li><a href='" + tableName + "'>" + tableName + "</a></li>"
+
+      #open(destination, 'a') do |f|
+      #      f << "\n" + content 
   end
 
 end

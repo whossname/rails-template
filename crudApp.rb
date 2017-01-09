@@ -36,8 +36,8 @@ copy_file "appFiles/layouts/_navbar.html.erb", "app/views/layouts/_navbar.html.e
 
 # set home page
 copy_file "appFiles/config/routes.rb", "config/routes.rb"
-copy_file "appFiles/controllers/home_controllers.rb", "app/controllers/home_controllers.rb"
-copy_file "appFiles/views/home/index.html.erb" "app/views/home/index.html.erb"
+copy_file "appFiles/controllers/home_controller.rb", "app/controllers/home_controller.rb"
+copy_file "appFiles/views/home/index.html.erb", "app/views/home/index.html.erb"
 
 # TEMPLATES
 paths = [
