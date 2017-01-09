@@ -22,40 +22,39 @@ model_name = "user"
 generate "devise", model_name
 
 
-# add templates and application files
+# default files
 
 def source_paths
       [File.expand_path(File.dirname(__FILE__))]
 end
 
-copy_file "appFiles/css/application.css", "app/assets/stylesheets/application.css"
-copy_file "appFiles/helpers/application_helper.rb", "app/helpers/application_helper.rb"
-copy_file "appFiles/config/application.rb", "config/application.rb"
-copy_file "appFiles/layouts/application.html.erb", "app/views/layouts/application.html.erb"
-copy_file "appFiles/layouts/_navbar.html.erb", "app/views/layouts/_navbar.html.erb"
-
-# set home page
-copy_file "appFiles/config/routes.rb", "config/routes.rb"
-copy_file "appFiles/controllers/home_controller.rb", "app/controllers/home_controller.rb"
-copy_file "appFiles/views/home/index.html.erb", "app/views/home/index.html.erb"
-
-# TEMPLATES
 paths = [
-    "templates/active_record/model/model.rb",
-    "templates/rails/scaffold_controller/controller.rb",
-    "templates/erb/controller/view.html.erb",
-    "templates/erb/scaffold/edit.html.erb",
-    "templates/erb/scaffold/index.html.erb",
-    "templates/erb/scaffold/show.html.erb",
-    "templates/erb/scaffold/_form.html.erb",
-    "templates/erb/scaffold/new.html.erb"
+    #
+    # app files
+    "app/helpers/application_helper.rb",
+    "config/application.rb",
+    #
+    # layouts
+    "app/assets/stylesheets/application.css",
+    "app/views/layouts/application.html.erb",
+    "app/views/layouts/_navbar.html.erb",
+    #
+    # set home page
+    "app/controllers/home_controller.rb",
+    "app/views/home/index.html.erb",
+    #
+    # templates
+    "lib/templates/active_record/model/model.rb",
+    "lib/templates/rails/scaffold_controller/controller.rb",
+    "lib/templates/erb/controller/view.html.erb",
+    "lib/templates/erb/scaffold/edit.html.erb",
+    "lib/templates/erb/scaffold/index.html.erb",
+    "lib/templates/erb/scaffold/show.html.erb",
+    "lib/templates/erb/scaffold/_form.html.erb",
+    "lib/templates/erb/scaffold/new.html.erb"
 ]
 
 paths.each do |path|
-    copy_file path, "lib/" + path 
+    copy_file path, path 
 end
-
-
-# append file using:
-## echo "hello world" >> my_file.txt
 
