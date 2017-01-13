@@ -35,10 +35,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-                <li><a href="users/sign_out">Log off</a></li>
+                <li><%= link_to "Log off",  "/users/sign_out", :method => :delete %></li>
             <%else %>
-                <li><a href="users/sign_up">Register</a></li>
-                <li><a href="users/sign_in">Log in</a></li>
+                <li><%= link_to "Sign up", "/users/sign_up" %></li>
+                <li><%= link_to "Sign in",   "/users/sign_in" %></li>
             <% end %>
         </ul>
       </div>

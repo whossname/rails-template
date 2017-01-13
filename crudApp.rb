@@ -7,6 +7,7 @@ gem "sunspot_rails"                     # search
 gem "sunspot_solr" 
 gem "exception_notification"            # exceptions
 gem "devise"                            # authentication
+gem "devise-bootstrap-views"  
 
 
 # INSTALL
@@ -21,7 +22,6 @@ rake "db:create", env: "development", sudo:true
 model_name = "user" 
 generate "devise", model_name
 
-
 # default files
 
 def source_paths
@@ -33,15 +33,12 @@ paths = [
     # app files
     "app/helpers/application_helper.rb",
     "config/application.rb",
+    "config/crudApp.rb",
     #
     # layouts
     "app/assets/stylesheets/application.css",
     "app/views/layouts/application.html.erb",
     "app/views/layouts/_navbar.html.erb",
-    #
-    # set home page
-    "app/controllers/home_controller.rb",
-    "app/views/home/index.html.erb",
     #
     # templates
     "lib/templates/active_record/model/model.rb",
@@ -51,10 +48,22 @@ paths = [
     "lib/templates/erb/scaffold/index.html.erb",
     "lib/templates/erb/scaffold/show.html.erb",
     "lib/templates/erb/scaffold/_form.html.erb",
-    "lib/templates/erb/scaffold/new.html.erb"
+    "lib/templates/erb/scaffold/new.html.erb",
+    #
+    # user list
+    "app/models/user.rb",
+    "app/views/users/index.html.erb",
+    "app/controllers/users_controller.rb",
+    #
+    # home page
+    "app/controllers/home_controller.rb",
+    "app/views/home/index.html.erb",
 ]
 
 paths.each do |path|
     copy_file path, path 
 end
 
+
+# devise views (added here as they may need some css)
+generate "devise:views:bootstrap_templates"

@@ -1,0 +1,59 @@
+<div class="page-header">
+  <h1>
+    <span class="glyphicon glyphicon-list-alt hidden-xs"></span>
+    Listing Users
+  </h1>
+</div>
+
+<%= form_tag users_index_path, :method => 'get', :id => "users_search" do %>
+  <p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+  </p>
+
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th> <%= sortable "email" %> </th>
+        <th> <%= sortable "created_at" %> </th>
+        <th> <%= sortable "sign_in_count" %> </th>
+        <th> <%= sortable "last_sign_in_at" %> </th>
+        <th> <%= sortable "last_sign_in_ip" %> </th>
+        <% if false %>
+        <th class="thin"></th>
+        <th class="thin"></th>
+        <th class="thin"></th>
+      <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @users) do |user| %>
+        <td><%= user.email %> </td>
+        <td><%= user.created_at %> </td>
+        <td><%= user.sign_in_count %> </td>
+        <td><%= user.last_sign_in_at %> </td>
+        <td><%= user.last_sign_in_ip %> </td>
+        <% if false %>
+        <td class="thin">
+          <%= link_to raw('<span data-toggle="tooltip" title="View" class="glyphicon glyphicon-eye-open"></span> '),
+            user %></td>
+        <td class="thin">
+          <%= link_to raw('<span data-toggle="tooltip" title="Edit" class="glyphicon glyphicon-pencil"> </span> '),
+            edit_user_path(recipe) %></td>
+        <td class="thin">
+          <%= link_to raw('<span data-toggle="tooltip" title="Delete" class="glyphicon glyphicon-trash"> </span> '),
+            user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate  @users, renderer: BootstrapPagination::Rails %> 
+
