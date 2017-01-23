@@ -2,16 +2,24 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-         :confirmable, :lockable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :confirmable, :lockable, :timeoutable
 
-    def self.search(search)
-        if search
-            searchString = "(last_sign_in_ip LIKE :search) OR (email LIKE :search)" 
-            where(searchString, search:"%#{search}%") 
-        else
-            all
-        end
+  def timeout_in
+    if self.admin? 
+      1.year
+    else
+      2.days
     end
+  end
+
+  def self.search(search)
+    if search
+      searchString = "(last_sign_in_ip LIKE :search) OR (email LIKE :search)" 
+      where(searchString, search:"%#{search}%") 
+    else
+      all
+    end
+  end
 end
 

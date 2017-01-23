@@ -14,8 +14,6 @@
  *= require_self
  */
 
-*= require devise_bootstrap_views
-*= require devise_bootstrap_views_less
 
 table .thin { 
     width: 5% ;
