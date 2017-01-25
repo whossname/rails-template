@@ -1,17 +1,23 @@
 <div class="page-header">
+  <%% if can? :read, <%= class_name %>  %>
   <%%= link_to <%= index_helper %>_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     List
   <%% end %>
+  <%% end %>
 
+  <%% if can? :read, <%= class_name %>  %>
   <%%= link_to @<%= singular_table_name %>, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-eye-open"></span>
     View
   <%% end %>
+  <%% end %>
 
+  <%% if can? :create, <%= class_name %>  %>
   <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-        New <%= human_name %>
+    New <%= human_name %>
+  <%% end %>
   <%% end %>
 
     <h1>

@@ -7,6 +7,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   before_filter :authenticate_user!
   before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  load_and_authorize_resource
 
   # GET <%= route_url %>
   def index

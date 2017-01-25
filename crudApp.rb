@@ -11,7 +11,6 @@ gem 'cancancan'                         # authorization
 
 # INSTALL
 run "bundle install"
-generate "sunspot_rails:install"
 generate "bootstrap:install"
 generate "devise:install"
 generate "cancan:ability"
@@ -33,7 +32,7 @@ paths = [
     # app files
     "app/helpers/application_helper.rb",
     "config/application.rb",
-    "config/crudApp.rb",
+    # "config/crudApp.rb",
     #
     # layouts
     "app/assets/stylesheets/application.css",
@@ -61,6 +60,13 @@ paths = [
     #
     # config
     "config/initializers/kaminari.rb",
+    "config/routes.rb",
+    "config/environments/development.rb",
+    #
+    # authorization
+    "app/models/ability.rb",
+    "app/models/role.rb",
+    "config/initializers/rails_admin.rb",
 ]
 
 paths.each do |path|

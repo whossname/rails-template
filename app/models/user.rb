@@ -6,11 +6,7 @@ class User < ApplicationRecord
     :confirmable, :lockable, :timeoutable
 
   def timeout_in
-    if self.admin? 
-      1.year
-    else
-      2.days
-    end
+    2.days
   end
 
   def self.search(search)

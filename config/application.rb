@@ -15,15 +15,25 @@ module App
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-      WillPaginate.per_page = 5
+    WillPaginate.per_page = 5
 
+    # mailer
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => 587,
+      :domain => ENV["MAILGUN_DOMAIN"], 
+      :user_name => ENV["MAILGUN_USERNAME"],
+      :password => ENV["MAILGUN_PASSWORD"]
+    }
 
-      #destination = "#{Rails.root}/app/views/layouts/_navbar.html.erb"
-      #tableName = ""
-      #content = "<li><a href='" + tableName + "'>" + tableName + "</a></li>"
+    #destination = "#{Rails.root}/app/views/layouts/_navbar.html.erb"
+    #tableName = ""
+    #content = "<li><a href='" + tableName + "'>" + tableName + "</a></li>"
 
-      #open(destination, 'a') do |f|
-      #      f << "\n" + content 
+    #open(destination, 'a') do |f|
+    #      f << "\n" + content 
   end
 
 end

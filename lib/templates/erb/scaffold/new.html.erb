@@ -1,12 +1,15 @@
 <div class="page-header">
+  <%% if can? :read, <%= class_name %>  %>
   <%%= link_to <%= index_helper %>_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     List
-  <%% end %>
+    <%% end %>
+    <%% end %>
+
     <h1>
-        <span class="glyphicon glyphicon-plus hidden-xs"></span>   
-        New <%= human_name %>
-    </h1>
+      <span class="glyphicon glyphicon-plus hidden-xs"></span>   
+      New <%= human_name %>
+  </h1>
 </div>
 
 <%%= render 'form' %>
