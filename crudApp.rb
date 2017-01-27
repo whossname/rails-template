@@ -67,6 +67,7 @@ paths = [
     "app/models/ability.rb",
     "app/models/role.rb",
     "config/initializers/rails_admin.rb",
+    "db/seeds.rb",
 ]
 
 paths.each do |path|
